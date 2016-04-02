@@ -48,6 +48,127 @@ public class CostCalculator extends AppCompatActivity {
         TextView txtvwCostBreakdown = (TextView) findViewById(R.id.txtvwCostBreakdown);
 
         //Insert your code here.
+        // determines how many toppings the user selected
+        for(int i = 0; i<toppingsOnPizza.length; i++)
+        {
+
+        }
+        if(numToppings == 1)
+        {
+            toppingCost = TOPPING_COST;
+        }
+        else if(numToppings == 2)
+        {
+            toppingCost = TOPPING_COST * 2;
+        }
+        else if(numToppings== 3)
+        {
+            numToppings = 3;
+            toppingCost = TOPPING_COST * 3;
+        }
+        else if(numToppings == 4)
+        {
+            toppingCost = TOPPING_COST * 4;
+        }
+        else if(numToppings == 5)
+        {
+            toppingCost = TOPPING_COST * 5;
+        }
+        else if(numToppings == 6)
+        {
+            toppingCost = TOPPING_COST * 6;
+        }
+        else if(numToppings == 7)
+        {
+            toppingCost = TOPPING_COST * 7;
+        }
+        else if(numToppings == 8)
+        {
+            toppingCost = TOPPING_COST * 8;
+        }
+        else if(numToppings == 9)
+        {
+            toppingCost = TOPPING_COST * 9;
+        }
+        else
+        {
+            toppingCost = TOPPING_COST * 10;
+        }
+
+
+        //determines what size is selected
+        if(sizeName.equals("SIZE_INDIVIDUAL"))
+        {
+            sizeName = "INDIVIDUAL";
+            sizeCost = INDIVIDUAL_COST;
+        }
+        else if(sizeName.equals("SIZE_SMALL"))
+        {
+            sizeName = "SMALL";
+            sizeCost = SMALL_COST;
+        }
+        else if(sizeName.equals("SIZE_MEDIUM"))
+        {
+            sizeName = "MEDIUM";
+            sizeCost = MEDIUM_COST;
+        }
+        else if(sizeName.equals("SIZE_LARGE"))
+        {
+            sizeName = "LARGE";
+            sizeCost = LARGE_COST;
+        }
+        else
+        {
+            sizeName = "EXTRA LARGE";
+            sizeCost = EXTRA_COST;
+        }
+        //determines what crust is selected
+        if(crustSelection.equals("CRUST_THIN"))
+        {
+            if(crustSelection.equals("CRUST_THIN") && hasGarlicCrust)
+            {
+                crustName = "THIN WITH GARLIC";
+                crustCost = THIN_CRUST + GARLIC_CRUST;
+
+            }
+            else
+            {
+                crustName = "THIN";
+                crustCost = THIN_CRUST;
+            }
+        }
+        else if(crustSelection.equals("CRUST_THICK"))
+        {
+            if(crustSelection.equals("CRUST_THICK") && hasGarlicCrust)
+            {
+                crustName = "THICK WITH GARLIC";
+                crustCost = THICK_CRUST + GARLIC_CRUST;
+            }
+            else
+            {
+                crustName = "THICK";
+                crustCost = THICK_CRUST;
+            }
+        }
+        else
+        {
+            if(crustSelection.equals("CRUST_CHEESEFILLED") && hasGarlicCrust)
+            {
+                crustName = "CHEESEFILLED WITH GARLIC";
+                crustCost = CHEESE_FILLED + GARLIC_CRUST;
+            }
+            else
+            {
+                crustName = "CHEESEFILLED";
+                crustCost = CHEESE_FILLED;
+            }
+        }
+        // calculation for subtotal, taxes and total
+        subtotal = toppingCost + sizeCost + crustCost;
+        taxes = subtotal * 0.05;
+        totalCost= subtotal + taxes;
+
+
 
         String costs = String.format("Toppings: %d x $0.75 = $%.2f\nSize: %s = $%.2f\n" +
                 "Crust Type: %s = $%.2f\nSubtotal: $%.2f\nTaxes: $%.2f\nTotal: $%.2f",

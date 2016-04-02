@@ -61,9 +61,61 @@ public class PizzaPreferences extends AppCompatActivity {
         boolean[] hasToppings = new boolean[toppings.length];
 
         //insert your code here
+        for(int i = 0; i < toppings.length; i++)
+        {
+            hasToppings[i] = toppings[i].isChecked();
+        }
 
-        calculatePizzaCost.putExtra("TOPPINGS_BOOLEANS", hasToppings);
+        calculatePizzaCost.putExtra("TOPPINGS_BOOLEANS",hasToppings);
+
+        // pizza sizes
+        if(rdobtnIndividual.isChecked())
+        {
+            calculatePizzaCost.hasExtra("SIZE_INDIVIDUAL");
+        }
+        else if(rdobtnSmall.isChecked())
+        {
+            calculatePizzaCost.hasExtra("SIZE_SMALL");
+        } else if (rdobtnMedium.isChecked())
+        {
+            calculatePizzaCost.hasExtra("SIZE_MEDIUM");
+        } else if(rdobtnLarge.isChecked())
+        {
+            calculatePizzaCost.hasExtra("SIZE_LARGE");
+        } else
+        {
+            calculatePizzaCost.hasExtra("SIZE_EXTRALARGE");
+        }
         startActivityForResult(calculatePizzaCost, 0);
+
+         // pizza crusts
+        if(rdobtnThin.isChecked())
+        {
+            calculatePizzaCost.hasExtra("CRUST_THIN");
+        }
+        else if (rdobtnThick.isChecked())
+        {
+            calculatePizzaCost.hasExtra("CRUST_THICK");
+        }
+        else
+        {
+            calculatePizzaCost.hasExtra("CRUST_CHEESEFILLED");
+
+        }
+        // garlic crust
+        if(!chkboxGarlic.isChecked())
+        {
+            calculatePizzaCost.putExtra("HAS_GARLIC_CRUST",false);
+        }
+        else
+        {
+            calculatePizzaCost.putExtra("HAS_GARLIC_CRUST",true);
+        }
+
+
+
+
+
     }
 
     /**
