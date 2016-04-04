@@ -20,6 +20,7 @@ public class PizzaPreferences extends AppCompatActivity {
     private RadioButton rdobtnCheeseFilled;
     private CheckBox chkboxGarlic;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,11 +60,66 @@ public class PizzaPreferences extends AppCompatActivity {
 
         Intent calculatePizzaCost = new Intent(this, CostCalculator.class);
         boolean[] hasToppings = new boolean[toppings.length];
-
         //insert your code here
+        for(int i = 0; i<hasToppings.length;i++)
+        {
+            if(toppings[i].isChecked())
+            {
+                hasToppings[i] = true;
+            }
+        }
+        calculatePizzaCost.putExtra("TOPPINGS_BOOLEANS",hasToppings);
 
-        calculatePizzaCost.putExtra("TOPPINGS_BOOLEANS", hasToppings);
-        startActivityForResult(calculatePizzaCost, 0);
+        // pizza sizes
+        if(rdobtnIndividual.isChecked())
+        {
+            calculatePizzaCost.putExtra("SIZE_SELECTION", "SIZE_INDIVIDUAL");
+            startActivityForResult(calculatePizzaCost, 0);
+        }
+        else if(rdobtnSmall.isChecked())
+        {
+            calculatePizzaCost.putExtra("SIZE_SELECTION", "SIZE_SMALL");
+            startActivityForResult(calculatePizzaCost, 0);
+        }
+        else if (rdobtnMedium.isChecked())
+        {
+            calculatePizzaCost.putExtra("SIZE_SELECTION", "SIZE_MEDIUM");
+            startActivityForResult(calculatePizzaCost, 0);
+        }
+        else if(rdobtnLarge.isChecked())
+        {
+            calculatePizzaCost.putExtra("SIZE_SELECTION", "SIZE_LARGE");
+            startActivityForResult(calculatePizzaCost, 0);
+        }
+        else
+        {
+            calculatePizzaCost.putExtra("SIZE_SELECTION", "SIZE_EXTRALARGE");
+            startActivityForResult(calculatePizzaCost, 0);
+        }
+
+
+
+        // pizza crusts
+        if(rdobtnThin.isChecked())
+        {
+            calculatePizzaCost.putExtra("SIZE_SELECTION", "CRUST_THIN");
+            startActivityForResult(calculatePizzaCost, 0);
+        }
+        else if (rdobtnThick.isChecked())
+        {
+            calculatePizzaCost.putExtra("SIZE_SELECTION", "CRUST_THICK");
+            startActivityForResult(calculatePizzaCost, 0);
+        }
+        else
+        {
+            calculatePizzaCost.putExtra("SIZE_SELECTION","CRUST_CHEESEFILLED");
+            startActivityForResult(calculatePizzaCost, 0);
+        }
+
+        // garlic crust
+
+
+
     }
 
     /**

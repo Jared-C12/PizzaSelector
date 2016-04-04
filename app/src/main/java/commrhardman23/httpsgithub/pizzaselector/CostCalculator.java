@@ -48,6 +48,52 @@ public class CostCalculator extends AppCompatActivity {
         TextView txtvwCostBreakdown = (TextView) findViewById(R.id.txtvwCostBreakdown);
 
         //Insert your code here.
+        if(sizeName.equals("SIZE_INDIVIDUAL"))
+        {
+            sizeName = "INDIVIDUAL";
+            sizeCost = INDIVIDUAL_COST;
+         }
+         else if(sizeName.equals("SIZE_SMALL"))
+        {
+            sizeName = "SMALL";
+            sizeCost = SMALL_COST;
+        }
+         else if(sizeName.equals("SIZE_MEDIUM"))
+        {
+            sizeName = "MEDIUM";
+            sizeCost = MEDIUM_COST;
+        }
+         else if(sizeName.equals("SIZE_LARGE"))
+        {
+            sizeName = "LARGE";
+            sizeCost = LARGE_COST;
+        }
+         else
+         {
+            sizeName = "EXTRA LARGE";
+            sizeCost = EXTRA_COST;
+         }
+
+         //determines what crust is selected
+          if(crustSelection.equals("CRUST_THIN"))
+          {
+              crustName = "THIN";
+              crustCost = THIN_CRUST;
+          }
+          else if(crustSelection.equals("CRUST_THICK"))
+          {
+              crustName = "THICK";
+              crustCost = THICK_CRUST;
+          }
+         else
+         {
+             crustName = "CHEESEFILLED";
+             crustCost = CHEESE_FILLED;
+         }
+         // calculation for subtotal, taxes and total
+         subtotal = toppingCost + sizeCost + crustCost;
+         taxes = subtotal * 0.05;
+         totalCost= subtotal + taxes;
 
         String costs = String.format("Toppings: %d x $0.75 = $%.2f\nSize: %s = $%.2f\n" +
                 "Crust Type: %s = $%.2f\nSubtotal: $%.2f\nTaxes: $%.2f\nTotal: $%.2f",
