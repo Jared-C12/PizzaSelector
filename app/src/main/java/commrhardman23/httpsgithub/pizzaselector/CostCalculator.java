@@ -49,123 +49,87 @@ public class CostCalculator extends AppCompatActivity {
 
         //Insert your code here.
         // determines how many toppings the user selected
-        for(int i = 0; i<toppingsOnPizza.length; i++)
+        for(int i = 0; i < toppingsOnPizza.length; i++)
         {
+            if(toppingsOnPizza[i] == true)
+            {
+               numToppings += 1;
 
-        }
-        if(numToppings == 1)
-        {
-            toppingCost = TOPPING_COST;
-        }
-        else if(numToppings == 2)
-        {
-            toppingCost = TOPPING_COST * 2;
-        }
-        else if(numToppings== 3)
-        {
-            numToppings = 3;
-            toppingCost = TOPPING_COST * 3;
-        }
-        else if(numToppings == 4)
-        {
-            toppingCost = TOPPING_COST * 4;
-        }
-        else if(numToppings == 5)
-        {
-            toppingCost = TOPPING_COST * 5;
-        }
-        else if(numToppings == 6)
-        {
-            toppingCost = TOPPING_COST * 6;
-        }
-        else if(numToppings == 7)
-        {
-            toppingCost = TOPPING_COST * 7;
-        }
-        else if(numToppings == 8)
-        {
-            toppingCost = TOPPING_COST * 8;
-        }
-        else if(numToppings == 9)
-        {
-            toppingCost = TOPPING_COST * 9;
-        }
-        else
-        {
-            toppingCost = TOPPING_COST * 10;
+            }
         }
 
+        toppingCost = numToppings * 0.75;
 
         //determines what size is selected
         if(sizeName.equals("SIZE_INDIVIDUAL"))
         {
-            sizeName = "INDIVIDUAL";
+            sizeName = "Individual";
             sizeCost = INDIVIDUAL_COST;
         }
         else if(sizeName.equals("SIZE_SMALL"))
         {
-            sizeName = "SMALL";
+            sizeName = "Small";
             sizeCost = SMALL_COST;
         }
         else if(sizeName.equals("SIZE_MEDIUM"))
         {
-            sizeName = "MEDIUM";
+            sizeName = "Medium";
             sizeCost = MEDIUM_COST;
         }
         else if(sizeName.equals("SIZE_LARGE"))
         {
-            sizeName = "LARGE";
+            sizeName = "Large";
             sizeCost = LARGE_COST;
         }
         else
         {
-            sizeName = "EXTRA LARGE";
+            sizeName = "Extra Large";
             sizeCost = EXTRA_COST;
         }
         //determines what crust is selected
         if(crustSelection.equals("CRUST_THIN"))
         {
-            if(crustSelection.equals("CRUST_THIN") && hasGarlicCrust)
+            if(crustSelection.equals("CRUST_THIN") && hasGarlicCrust == true)
             {
-                crustName = "THIN WITH GARLIC";
+                crustName = "Thin with garlic";
                 crustCost = THIN_CRUST + GARLIC_CRUST;
 
             }
             else
             {
-                crustName = "THIN";
+                crustName = "Thin";
                 crustCost = THIN_CRUST;
             }
         }
         else if(crustSelection.equals("CRUST_THICK"))
         {
-            if(crustSelection.equals("CRUST_THICK") && hasGarlicCrust)
+            if(crustSelection.equals("CRUST_THICK") && hasGarlicCrust == true)
             {
-                crustName = "THICK WITH GARLIC";
+                crustName = "Thick with garlic";
                 crustCost = THICK_CRUST + GARLIC_CRUST;
             }
             else
             {
-                crustName = "THICK";
+                crustName = "Thick";
                 crustCost = THICK_CRUST;
             }
         }
         else
         {
-            if(crustSelection.equals("CRUST_CHEESEFILLED") && hasGarlicCrust)
+            if(crustSelection.equals("CRUST_CHEESEFILLED") && hasGarlicCrust == true)
             {
-                crustName = "CHEESEFILLED WITH GARLIC";
+                crustName = "Cheese filled with garlic";
                 crustCost = CHEESE_FILLED + GARLIC_CRUST;
             }
             else
             {
-                crustName = "CHEESEFILLED";
+                crustName = "Cheese filled";
                 crustCost = CHEESE_FILLED;
             }
         }
         // calculation for subtotal, taxes and total
         subtotal = toppingCost + sizeCost + crustCost;
-        taxes = subtotal * 0.05;
+        taxes = subtotal * 0.13;
         totalCost= subtotal + taxes;
 
 
